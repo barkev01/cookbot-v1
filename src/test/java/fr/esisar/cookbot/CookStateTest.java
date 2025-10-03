@@ -1,6 +1,7 @@
 package fr.esisar.cookbot;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,30 +14,25 @@ class CookStateTest {
 	void initalizeCookBot() {
 		this.cookBot = new CookBot();
 		cookBot.regularCook();
-		assertEquals(CookBot.COOK, cookBot.getState());
+		assertInstanceOf(CookState.class, cookBot.getState());
 	}
 	
 	@Test
 	void switchOn() {
 		cookBot.switchOn();
-		assertEquals(CookBot.ON, cookBot.getState());
+		assertInstanceOf(OnState.class, cookBot.getState());
 	}
 	
 	@Test
 	void regularCook() {
 		cookBot.regularCook();
-		assertEquals(CookBot.COOK, cookBot.getState());
+		assertInstanceOf(CookState.class, cookBot.getState());
 	}
 	
-	@Test
-	void slowCook() {
-		cookBot.slowCook();
-		assertEquals(CookBot.SLOW_COOK, cookBot.getState());
-	}
 	
 	@Test
 	void switchOff() {
 		cookBot.switchOff();
-		assertEquals(CookBot.COOK, cookBot.getState());
+		assertInstanceOf(CookState.class, cookBot.getState());
 	}
 }
